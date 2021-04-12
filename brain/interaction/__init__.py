@@ -19,18 +19,16 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
+
 from brain import *
-from setup.startup import OdinStartup
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinRecon:
+    def __init__(self, statement):
+        self.__statement = statement
+        self.__odinspeech = OdinSpeech()
+        self.recon_interaction()
+
+    def recon_interaction(self):
+        if 'wikipedia' in self.__statement:
+            OdinWikipedia()

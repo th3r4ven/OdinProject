@@ -19,18 +19,7 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
-from brain import *
-from setup.startup import OdinStartup
-
-
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+from brain.speech import *
+from brain.hearing import *
+from brain.core import *
+from brain.interaction import *

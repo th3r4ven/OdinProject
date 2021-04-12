@@ -19,18 +19,20 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
+import wikipedia
 from brain import *
-from setup.startup import OdinStartup
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinWikipedia:
+
+    def __init__(self):
+        self.__odinspeech = OdinSpeech()
+        self.__odin_hearing = OdinHearing()
+        self.search()
+
+    def search(self):
+        self.__odinspeech.speak('What do you want to search on wikipedia son?')
+        statement = self.__odin_hearing.listen()
+        results = wikipedia.summary(statement, sentences=3)
+        self.__odinspeech.speak("According to Wikipedia")
+        self.__odinspeech.speak(results)

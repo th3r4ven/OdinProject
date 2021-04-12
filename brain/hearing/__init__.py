@@ -19,18 +19,24 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
+import speech_recognition as sr
 from brain import *
-from setup.startup import OdinStartup
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinHearing:
+    def __init__(self):
+        self.__odin_speech = OdinSpeech()
+
+    def listen(self):
+        r = sr.Recognizer()
+        statement = ""
+        with sr.Microphone() as source:
+            audio = r.listen(source)
+
+        try:
+            statement = r.recognize_google(audio, language='en-in')
+
+        except Exception:
+            self.__odin_speech.speak("I dont understand you, please say it again")
+            self.listen()
+        return statement.lower()

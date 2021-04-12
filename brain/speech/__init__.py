@@ -19,18 +19,24 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
-from brain import *
-from setup.startup import OdinStartup
+from setup import *
+import datetime
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinSpeech:
+
+    def __init__(self):
+        self.odin_voice = setupSpeech.odin_voice
+
+    def speak(self, text):
+        self.odin_voice.say(text)
+        self.odin_voice.runAndWait()
+
+    def greetings(self):
+        hour = datetime.datetime.now().hour
+        if 6 <= hour < 12:
+            self.speak("Good Morning")
+        elif 12 <= hour < 18:
+            self.speak("Good Afternoon")
+        else:
+            self.speak("Good Evening")
