@@ -24,7 +24,6 @@ pip install -r requirements.txt
 ## How to run Odin
 
 
-> On windows (recommended):
 ```
 python Odin.py
 ```
