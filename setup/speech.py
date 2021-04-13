@@ -45,6 +45,9 @@ class OdinSpeechSetup:
     def setup_speech_rate(self):
         self._odin_voice.setProperty('rate', self._odin_voice.getProperty('rate') - 55)
 
+    def setup_speech_volume(self):
+        self._odin_voice.setProperty('volume', 0.75)
+
     @property
     def odin_voice(self):
         return self._odin_voice

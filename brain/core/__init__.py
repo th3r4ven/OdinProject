@@ -20,3 +20,4 @@
 #  USA
 
 from brain.core.wikipedia import *
+from brain.core.webbrowser_tab import *

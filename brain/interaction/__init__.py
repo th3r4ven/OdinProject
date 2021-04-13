@@ -24,11 +24,30 @@ from brain import *
 
 
 class OdinRecon:
-    def __init__(self, statement):
+    def __init__(self, statement, speech, hearing):
         self.__statement = statement
-        self.__odinspeech = OdinSpeech()
+        self.__odinspeech = speech
+        self.__odin_hearing = hearing
         self.recon_interaction()
 
+    def background(self):
+        statement = self.__odin_hearing.listen()
+
+        if 'odin' in statement:
+            self.__odinspeech.speak("Hail!, Im listening you!")
+            OdinRecon(self.__odin_hearing.listen(), self.__odinspeech, self.__odin_hearing)
+        else:
+            self.background()
+
     def recon_interaction(self):
-        if 'wikipedia' in self.__statement:
-            OdinWikipedia()
+
+        if 'help' in self.__statement:
+            self.__odinspeech.speak("My developed is in progress, so i can't answer that now, sorry")
+        elif 'wikipedia' in self.__statement:
+            OdinWikipedia(self.__odinspeech, self.__odin_hearing)
+        elif 'open' in self.__statement:
+            OdinWebBrowser(self.__odinspeech, self.__odin_hearing)
+        elif 'sleep' in self.__statement:
+            self.background()
+
+        self.background()

@@ -25,4 +25,5 @@ from setup.speech import *
 setupSpeech = OdinSpeechSetup()
 setupSpeech.setup_speech()
 setupSpeech.setup_speech_rate()
+setupSpeech.setup_speech_volume()
 

@@ -35,12 +35,11 @@ class OdinStartup:
 
         try:
             statement = r.recognize_google(audio, language='en-in').lower()
-            if "holding start" in statement or "start" in statement or "odin start" in statement:
+            if "start" or "odin start" in statement:
                 self.__odin_speech.greetings()
-                self.__odin_speech.speak('Hi, Im Odin, your personal Artificial Intelligence, how can I help you my '
-                                         'son?')
+                self.__odin_speech.speak('Hi, Im Odin, your personal Artificial Intelligence, how can I help you?')
 
-                return OdinRecon(self.__odin_hearing.listen())
+                return OdinRecon(self.__odin_hearing.listen(), self.__odin_speech, self.__odin_hearing)
 
             elif "good bye" in statement or "ok bye" in statement or "bye" in statement:
                 self.__odin_speech.speak('Ok, Im returning to valhalla')

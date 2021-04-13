@@ -37,6 +37,6 @@ class OdinHearing:
             statement = r.recognize_google(audio, language='en-in')
 
         except Exception:
-            self.__odin_speech.speak("I dont understand you, please say it again")
             self.listen()
+
         return statement.lower()

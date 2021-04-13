@@ -25,13 +25,13 @@ from brain import *
 
 class OdinWikipedia:
 
-    def __init__(self):
-        self.__odinspeech = OdinSpeech()
-        self.__odin_hearing = OdinHearing()
+    def __init__(self, speech, hearing):
+        self.__odinspeech = speech
+        self.__odin_hearing = hearing
         self.search()
 
     def search(self):
-        self.__odinspeech.speak('What do you want to search on wikipedia son?')
+        self.__odinspeech.speak('What do you want to search on wikipedia?')
         statement = self.__odin_hearing.listen()
         results = wikipedia.summary(statement, sentences=3)
         self.__odinspeech.speak("According to Wikipedia")
