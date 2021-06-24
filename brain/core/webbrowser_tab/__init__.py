@@ -25,39 +25,46 @@ from time import sleep
 
 class OdinWebBrowser:
 
-    def __init__(self, speech, hearing):
+    def __init__(self, speech, hearing, statement):
         self.__odinspeech = speech
         self.__odin_hearing = hearing
+        self.__statement = statement
         self.search()
 
     def search(self):
-        self.__odinspeech.speak('What do you want me to open on your browser?')
-        statement = self.__odin_hearing.listen()
-        if 'twitch' in statement:
+        if 'twitch' in self.__statement:
             open_tab("https://twitch.com")
             self.__odinspeech.speak("Twich is now open, Enjoy!")
             sleep(3)
-        elif 'github' in statement:
+        elif 'github' in self.__statement:
             open_tab("https://github.com")
             self.__odinspeech.speak("Github is now open, Enjoy!")
             sleep(3)
-        elif 'youtube' in statement:
+        elif 'youtube' in self.__statement:
             open_tab("https://youtube.com")
             self.__odinspeech.speak("youtube is now open, Enjoy!")
             sleep(3)
-        elif 'netflix' in statement:
+        elif 'netflix' in self.__statement:
             open_tab("https://netflix.com")
             self.__odinspeech.speak("Netflix is now open, Enjoy!")
             sleep(3)
-        elif 'disney' in statement:
+        elif 'disney' in self.__statement:
             open_tab("https://disneyplus.com/")
             self.__odinspeech.speak("Disney plus is now open, Enjoy!")
             sleep(3)
-        elif 'google' in statement:
+        elif 'google' in self.__statement:
             open_tab("https://google.com")
             self.__odinspeech.speak("Google is now open, Enjoy!")
             sleep(3)
-        elif 'gmail' in statement:
+        elif 'gmail' in self.__statement:
             open_tab("https://gmail.com")
             self.__odinspeech.speak("Gmail is now open, Enjoy!")
             sleep(3)
+        elif "search" in self.__statement:
+            open_tab(f'https://www.google.com/search?q={self.__statement.replace("search", "")}')
+            self.__odinspeech.speak("Here is you search result!")
+            sleep(3)
+        elif 'news' in self.__statement:
+            open_tab("https://g1.globo.com/")
+            self.__odinspeech.speak('Here are some headlines from G1. Happy reading!')
+            sleep(5)

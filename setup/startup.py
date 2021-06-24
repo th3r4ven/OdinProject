@@ -33,7 +33,7 @@ class OdinStartup:
         with sr.Microphone() as source:
             audio = r.listen(source)
 
-        try:
+        # try:
             statement = r.recognize_google(audio, language='en-in').lower()
             if "start" or "odin start" in statement:
                 self.__odin_speech.greetings()
@@ -47,7 +47,7 @@ class OdinStartup:
             else:
                 self.startup()
 
-        except Exception:
-            self.__odin_speech.speak("I dont understand you, please say it again")
-            self.startup()
+        # except Exception as e:
+        #     self.__odin_speech.speak("I dont understand you, please say it again")
+        #     self.startup()
         return

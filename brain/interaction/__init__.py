@@ -19,7 +19,6 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
 
-
 from brain import *
 
 
@@ -46,8 +45,15 @@ class OdinRecon:
         elif 'wikipedia' in self.__statement:
             OdinWikipedia(self.__odinspeech, self.__odin_hearing)
         elif 'open' in self.__statement:
-            OdinWebBrowser(self.__odinspeech, self.__odin_hearing)
+            OdinWebBrowser(self.__odinspeech, self.__odin_hearing, self.__statement)
+        elif 'time' in self.__statement:
+            OdinTime(self.__odinspeech)
+        elif 'news' in self.__statement:
+            OdinWebBrowser(self.__odinspeech, self.__odin_hearing, self.__statement)
+        elif "search" in self.__statement:
+            OdinWebBrowser(self.__odinspeech, self.__odin_hearing, self.__statement)
+        elif "power off" or "turn off" in self.__statement:
+            OdinCommand(self.__odinspeech, self.__odin_hearing, self.__statement).powerOff()
         elif 'sleep' in self.__statement:
             self.background()
-
         self.background()

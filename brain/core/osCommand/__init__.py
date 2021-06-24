@@ -18,11 +18,16 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
-
-import wolframalpha
-from setup.startup import OdinStartup
+import subprocess
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinCommand:
+
+    def __init__(self, speech, hearing, statement):
+        self.__odinspeech = speech
+        self.__odin_hearing = hearing
+        self.__statement = statement
+
+    def powerOff(self):
+        self.__odinspeech.speak("Ok, your computer will power off now, See you!")
+        subprocess.call(["shutdown", "/s"])

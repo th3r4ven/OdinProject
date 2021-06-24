@@ -18,11 +18,15 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 #  USA
-
-import wolframalpha
-from setup.startup import OdinStartup
+import datetime
 
 
-if __name__ == '__main__':
-    odin_startup = OdinStartup()
-    odin_startup.startup()
+class OdinTime:
+
+    def __init__(self, speech):
+        self.__odinspeech = speech
+        self.sayTime()
+
+    def sayTime(self):
+        strTime = datetime.datetime.now().strftime("%H:%M")
+        self.__odinspeech.speak(f"It's {strTime}")

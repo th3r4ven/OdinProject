@@ -21,3 +21,5 @@
 
 from brain.core.wikipedia import *
 from brain.core.webbrowser_tab import *
+from brain.core.time import *
+from brain.core.osCommand import *
