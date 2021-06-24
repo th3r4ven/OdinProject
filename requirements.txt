@@ -5,7 +5,6 @@ comtypes==1.1.9
 cycler==0.10.0
 decorator==4.4.2
 docopt==0.6.2
-ecapture==0.0.7
 idna==2.10
 imageio==2.9.0
 jaraco.context==4.0.0
@@ -21,7 +20,6 @@ packaging==20.9
 pep517==0.10.0
 Pillow==8.2.0
 pipwin==0.5.1
-PyAudio @ file:///C:/Users/mathe/pipwin/PyAudio-0.2.11-cp38-cp38-win_amd64.whl
 pyjsparser==2.7.1
 pyparsing==2.4.7
 pypiwin32==223
